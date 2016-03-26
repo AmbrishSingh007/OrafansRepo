@@ -1,0 +1,13 @@
+<apex:page controller="StudenttController">
+<apex:form >
+  ID<!--<input type="text" />-->
+  <apex:inputText value="{!id}"/>
+  <apex:commandButton value="Search" />
+  <apex:pageBlock >
+  <apex:pageBlockTable value="{!Details}" var="X">
+      <apex:column value="{!X.English__c}"/>
+      <apex:column value="{!X.Maths__c}"/>
+  </apex:pageBlockTable>
+  </apex:pageBlock>
+</apex:form>
+</apex:page>

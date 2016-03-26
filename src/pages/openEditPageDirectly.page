@@ -1,0 +1,37 @@
+<apex:page standardController="Account" sidebar="false" showHeader="false" >
+
+{!account.Name}
+<apex:outputLink value="{! URLFOR($Action.Account.new)}">Create</apex:outputLink><br/>
+<apex:outputLink value="http://google.com/">Click Me!!!</apex:outputLink><br/>
+<apex:outputLink value="{!URLFOR($Action.Farzi__c.New,null,[RecordType='01290000000mkDa',Type='Farzi__c'])}">Click Me!!!</apex:outputLink>
+
+<apex:pageBlock >
+    <apex:pageBlockSection >
+        <apex:outputField value="{!account.Name}"/>
+    </apex:pageBlockSection>
+</apex:pageBlock>
+
+
+
+
+
+<apex:pageBlock > 
+    <apex:pageBlockTable value="{!account.contacts}" var="c">
+        <apex:column value="{!c.Name}"/>
+        <apex:column value="{!c.Phone}"/>
+        <apex:column value="{!c.Email}"/>
+    </apex:pageBlockTable>    
+</apex:pageBlock>
+
+
+<apex:relatedList list="Cases"/>
+<apex:detail relatedList="true" />
+
+
+
+<apex:dataList value="{!account.Contacts}" var="X">
+<apex:outputText value="{!X.Name}"/>
+</apex:dataList>
+
+
+</apex:page>

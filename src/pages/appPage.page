@@ -1,0 +1,59 @@
+<apex:page controller="mobApp">
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.css" />
+    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="//code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
+
+<script>
+$(document).on("pagecreate","#pageone",function(){
+  $("#pageone").on("swipe",function(){
+   alert('Swipe detected!');
+   inc();
+  });                       
+});
+</script>
+<style>
+.col{
+height: 40px;
+}
+</style>
+<body>
+<apex:form >
+<apex:actionFunction name="inc" action="{!increment}" reRender="AAA,BBB,i1,i2,i3,i4,i5,i6"/>
+<div data-role="page" id="pageone">
+<apex:outputLabel value="{!i}" id="BBB"/>
+  <table border="1px">
+      <tr>
+          <td class="col">
+              <apex:outputLabel value="{!Data.id}" id="i1"/>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <apex:outputLabel value="{!Data.name}" id="i2"/>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <apex:outputLabel value="{!Data.Vendor__c}" id="i3"/>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <apex:outputLabel value="{!Data.Category__c}" id="i4"/>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <apex:outputLabel value="{!Data.Description__c}" id="i5"/>
+          </td>
+      </tr>
+      
+  </table>
+</div> 
+</apex:form>
+</body>
+
+</apex:page>

@@ -1,0 +1,33 @@
+<apex:page controller="ITEbooksController" sidebar="false" showHeader="false">
+<script>
+function validate(n,e,p)
+{
+    var name=document.getElementById(n).value;
+    var email=document.getElementById(e).value;
+    var phone=document.getElementById(p).value;
+
+    if(name.length>0 && email.length>0 && phone.length>0)
+    {
+        //alert('Success');
+        return true;
+    }
+    alert('Please fill all the fields');
+    return false;
+   
+}
+</script>
+  <apex:pageBlock >
+      <apex:form >
+      <B><font color="green">**We will use the information provided by you to send links so make sure you enter valid data</font></B>
+          <apex:panelGrid columns="2">
+          <apex:outputLabel >Name</apex:outputLabel>
+              <apex:inputText value="{!usr.name}" id="name" />
+              <apex:outputLabel >Email ID</apex:outputLabel>
+              <apex:inputText value="{!usr.EmailID__c}" id="email" />
+              <apex:outputLabel >Phone</apex:outputLabel>
+              <apex:inputText value="{!usr.Phone__c}" id="phone" />
+              <apex:commandButton value="Save & Send Link(s)" onclick="return validate('{!$Component.name}','{!$Component.email}','{!$Component.phone}')" action="{!Done}"/>
+          </apex:panelGrid>
+      </apex:form>
+  </apex:pageBlock>
+</apex:page>

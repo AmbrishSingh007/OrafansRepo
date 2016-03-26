@@ -1,0 +1,29 @@
+<apex:page >
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<apex:form id="frm" >
+<div id="onloadprogress" > </div>
+<style>
+.amb-bodyBgOpacity {
+    height: 100%;
+    left: 0;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    width: 50%;
+    z-index: 1000;
+    background: url("/img/loading32.gif") no-repeat scroll 500px 320px #818080;
+    background-color: #FFFFFF;
+}
+</style>
+<script type="text/javascript"> 
+function show(){
+    document.getElementById("onloadprogress").className = "amb-bodyBgOpacity";
+}
+function hide(){
+    document.getElementById("onloadprogress").className = "none";
+}
+</script>    
+  <apex:outputLabel id="oLabel" value="Ambrish"/>  
+  <apex:commandButton value="Test" onclick="show()"  reRender="oLabel" />
+  </apex:form>
+</apex:page>

@@ -1,0 +1,32 @@
+<apex:page controller="DynamicBinding">
+  
+   <apex:form >
+       <apex:pageBlock >
+       <!--
+       <apex:pageBlockSection title="Dynamic Object Binding">
+           <apex:repeat value="{!listObjectFields1}" var="field">
+               {!field.apiName}
+               <apex:inputField rendered="{!field.visible}" required="{!field.mandatory}" value="{!sObjectToBind[field.apiName]}"/>
+           </apex:repeat>
+           <apex:commandButton value="Save" action="{!saveData}"/>
+       </apex:pageBlockSection>
+       -->
+       <apex:commandButton value="Save" action="{!saveData}" rerender="table1"/>
+       <apex:pageblockTable value="{!listObjectFields1}" var="field" id="table1">
+           <apex:column value="{!field.apiName}"/> 
+           <apex:column >
+               <apex:inputField rendered="{!field.visible}" required="{!field.mandatory}" value="{!sObjectToBind[field.apiName]}"/>
+           </apex:column>
+       </apex:pageblockTable>
+       </apex:pageBlock>
+       <apex:commandButton value="Save" action="{!saveData}" rerender="table2"/>
+       <apex:repeat value="{!listObjectFields1}" var="field" id="table2">
+               {!field.apiName}
+               <apex:inputField rendered="{!field.visible}" required="{!field.mandatory}" value="{!sObjectToBind[field.apiName]}"/>
+           </apex:repeat>
+       
+       
+   </apex:form>
+
+
+</apex:page>

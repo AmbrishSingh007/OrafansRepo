@@ -1,0 +1,33 @@
+<apex:page controller="MyLeadUpdateController" sidebar="false">
+
+<apex:form >
+<apex:outputLabel id="A">{!Data}</apex:outputLabel>
+<apex:outputLabel id="B">{!B}</apex:outputLabel>
+<apex:pageBlock >
+    <apex:outputLabel >Company Name</apex:outputLabel>
+    <apex:inputText value="{!searchItem}" styleClass="look"/>
+    <apex:commandButton value="Search" rerender="leadTable,A" action="{!setLeads}"/>
+</apex:pageBlock>  
+
+<apex:pageBlock ><!--  
+    <apex:pageBlockButtons >
+       <apex:commandButton action="{!closeLeads}" value="Close Leads" rerender="leadTable" />
+       <apex:commandButton value="Select All Open Leads" action="{!selectAllOpen}" rerender="leadTable" /> 
+    </apex:pageBlockButtons>-->
+            <apex:pageBlockTable var="aLead" value="{!Leads}" id="leadTable">
+            <apex:column headerValue="Checked"><apex:inputCheckbox value="{!aLead.check}"/></apex:column>          
+            <apex:column headerValue="ID" value="{!aLead.l.id}"/>
+            <apex:column headerValue="Name"  ><apex:outputLabel value="{!aLead.l.name}"/></apex:column>
+            <apex:column headerValue="Company" ><apex:outputLabel value="{!aLead.l.Company}"/></apex:column> 
+             <apex:column headerValue="Lead Status" ><apex:outputLabel value="{!aLead.l.Status}"/></apex:column>          
+        </apex:pageBlockTable>
+        <apex:pageBlockSection >
+            <!--<apex:commandLink action="{!Previous}" value="Previous" reRender="leadTable"/>-->
+            <apex:commandLink action="{!gotoNext}" value="Next" reRender="leadTable,A" onclick="alert('Hey');"/>
+            <apex:commandLink action="{!goto}" value="Add" reRender="B" onclick="alert('Hi');"/>        
+            </apex:pageBlockSection>
+     
+</apex:pageBlock>
+
+</apex:form>
+</apex:page>

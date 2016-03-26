@@ -1,0 +1,27 @@
+<apex:page standardController="Contact">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"/>
+    <script src="https://ajax.microsoft.com/ajax/jquery.ui/1.8.5/jquery-ui.js"/>
+    <script src="http://malsup.github.com/jquery.blockUI.js" />
+    <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" />
+
+    <script>
+     j$ = jQuery.noConflict(); 
+
+    function blockme() {
+    alert('Hi');
+        j$.blockUI({ css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+            } }); 
+
+      }
+    </script>
+    <apex:form >
+        <apex:commandButton onclick="blockme()" oncomplete="unblockUI();" value="Save!" action="{!quickSave}" />
+    </apex:form>
+</apex:page>

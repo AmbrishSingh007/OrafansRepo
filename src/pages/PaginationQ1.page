@@ -1,0 +1,29 @@
+<apex:page standardController="Account" extensions="pg1">
+<script>
+    function add_remove(){ alert('did it'); }
+</script>
+  <apex:pageBlock >
+      <apex:pageBlockSection >
+      <apex:form >
+      <!--<apex:actionFunction name="add_remove"   />
+          <apex:param name="check_id" assignTo="{!parameter}" value="{!}"/>
+      </apex:actionFunction>-->
+      <apex:actionFunction name="ajax" reRender="table1" />
+      <apex:commandButton value="Print" action="{!redirect}"/>
+          <apex:pageBlockTable id="table1" var="c" value="{!Contacts}">
+              <apex:column ><apex:inputCheckbox id="check" value="{!c.selected}" /></apex:column>
+              <apex:column value="{!c.c.id}"/>
+              <apex:column value="{!c.c.name}"/>
+          </apex:pageBlockTable>
+          <apex:panelGrid columns="4" cellspacing="16" >
+          <apex:commandButton value="<" action="{!Previous}" rendered="{!hasPrevious}" onclick="ajax()" />
+          <apex:commandButton value=">" action="{!Next}" rendered="{!hasNext}" onclick="ajax()" />
+          <!--
+            <apex:commandLink action="{!Previous}" value="Previous Page " rendered="{!HasPrevious}"/>
+            <apex:commandLink action="{!Next}" value="Next Page " rendered="{!HasNext}"/>
+            -->
+         </apex:panelGrid>
+      </apex:form>
+      </apex:pageBlockSection>
+  </apex:pageBlock>
+</apex:page>

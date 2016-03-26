@@ -1,0 +1,14 @@
+<apex:page controller="ConditionalReRendering">
+    <apex:form >
+      <apex:inputText value="{!query}"/>
+      <apex:actionFunction name="DoIt"  reRender="table"/>
+      <apex:commandButton value="Search" action="{!getData}" onclick="DoIt()" />
+      <apex:pageBlock id="table" rendered="{!IF(query!=null,true,false)}">
+        <apex:pageBlockTable var="X" value="{!acc}">
+            <apex:column value="{!X.id}"/>
+            <apex:column value="{!X.name}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

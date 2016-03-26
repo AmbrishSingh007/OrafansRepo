@@ -1,0 +1,26 @@
+<apex:page standardController="Account" extensions="contactHandler5">
+<script type="text/javascript">
+function redirect(){
+    alert("{!gotoDetailPage}");
+   window.location="{!gotoDetailPage}";
+}
+</script>
+
+<apex:form >
+<apex:pageBlock >
+   <!--<apex:actionFunction name="UpdateContacts"  action="{!UpdateContacts}"  />  
+<apex:actionFunction name="gotoDetailPage"  action="{!gotoDetailPage}"  />-->
+   <apex:commandButton value="View"  oncomplete="redirect()" action="{!UpdateContacts}" />
+   <apex:commandLink value="View Selected List" target="_blank" action="{!UpdateContacts}"  oncomplete="redirect()"/>
+    <apex:pageBlockSection >
+            <apex:pageBlockTable var="aContact" value="{!Wrap}" id="ContactTable">
+            <apex:column headerValue="Checked"><apex:inputCheckbox value="{!aContact.checked}"/></apex:column>          
+            <apex:column headerValue="ID" value="{!aContact.con.id}"/>
+            <apex:column headerValue="Name"><apex:outputLabel value="{!aContact.con.name}"/></apex:column>
+            <apex:column headerValue="AccountID" value="{!aContact.con.AccountId}"/>        
+        </apex:pageBlockTable>
+    </apex:pageBlockSection>      
+</apex:pageBlock>
+</apex:form>
+
+</apex:page>

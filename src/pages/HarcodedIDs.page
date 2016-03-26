@@ -1,0 +1,7 @@
+<apex:page controller="HardCodedIDsController">
+<apex:form >
+  <apex:inputText value="{!id}"/><br/><br/>
+  <apex:inputText value="{!name}"/>
+  <input type="button" value="Run" />
+  </apex:form>
+</apex:page>

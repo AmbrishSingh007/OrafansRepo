@@ -1,0 +1,3 @@
+<apex:page standardController="Case" extensions="FieldCreator">
+  <apex:dynamicComponent componentValue="{!panel1}"/> 
+</apex:page>

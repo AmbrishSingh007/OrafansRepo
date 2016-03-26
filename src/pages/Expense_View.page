@@ -1,0 +1,42 @@
+<apex:page controller="ExpenseController">
+<apex:pageBlock >
+<apex:pageBlockSection >
+    <apex:form >
+        From
+        <apex:selectList value="{!fromDate.mm}" id="fdMM" size="1">
+            <apex:selectOptions value="{!MM}"/>
+        </apex:selectList>
+        <apex:selectList value="{!fromDate.yy}" id="fdYY" size="1">
+            <apex:selectOptions value="{!YY}"/>
+        </apex:selectList>
+        <br/><br/>
+        
+        To
+        <apex:selectList value="{!toDate.mm}" id="toMM" size="1">
+            <apex:selectOptions value="{!MM}"/>
+        </apex:selectList>
+        <apex:selectList value="{!toDate.yy}" id="toYY" size="1">
+            <apex:selectOptions value="{!YY}"/>
+        </apex:selectList>
+        
+        <br/><br/>
+        Spent By
+        <apex:selectList value="{!spentBy}" id="SpentBy" size="1">
+            <apex:selectOptions value="{!Names}"/>
+        </apex:selectList>
+        
+        <apex:commandButton value="Find"  onclick="action()"  /> 
+        <apex:actionFunction name="action" action="{!getAllData}" rerender="Data"/> 
+
+        <apex:pageBlockTable var="rec" value="{!AllData}" id="Data">
+          <apex:column value="{!rec.Spent_By__c}"/>
+          <apex:column value="{!rec.Date__c}"/>
+          <apex:column value="{!rec.Amount__c}"/>
+          <apex:column value="{!rec.Description__c}"/>     
+        </apex:pageBlockTable>
+        Total: Rs {!total}
+    </apex:form>
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+</apex:page>

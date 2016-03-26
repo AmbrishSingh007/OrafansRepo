@@ -1,0 +1,16 @@
+<apex:page Controller="DataFilter">
+<apex:form >
+  <apex:pageBlock >
+      <apex:inputText value="{!objName}"/>
+      <apex:selectList id="category" value="{!chooseCategory}" size="1"  >
+                         <apex:selectOptions value="{!Items}"/>
+                     </apex:selectList>
+      <apex:commandButton value="Search"/>
+  </apex:pageBlock>
+  <apex:pageBlock >
+      <apex:pageBlockTable var="a" value="{!Data}">
+          <apex:column value="{!a['name']}"/>
+      </apex:pageBlockTable>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

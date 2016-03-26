@@ -1,0 +1,85 @@
+<apex:page controller="ITEbooksController" sidebar="false" showHeader="false" >
+<script>
+/*function R()
+{
+    //document.getElementById('j_id0:j_id2:j_id5:j_id6:query').value='XXXXXXXXXXXXXXXX';
+    //document.getElementById('j_id0:j_id2:j_id5:j_id6:query').disabled=false;
+    alert("Hi"+{!$Component.query});
+}*/
+function validate(serchBox)
+{
+    //var name=document.getElementById(serchBox).value;
+    if(document.getElementById(serchBox).value.length>0)
+    {
+        //alert('Success');
+        //render();
+        return true;
+    }
+    alert('Please enter book name or category to search');
+    return false;
+   
+}
+</script>
+<style>
+.logo{
+    background-image: url('{!$Resource.Logo2}');
+    height: 150px;
+    width: 100%;
+}
+</style>
+<div id="onloadprogress" > </div>
+<style>
+.amb-bodyBgOpacity {
+    height: 100%;
+    left: 0;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: url("/img/loading32.gif") no-repeat scroll 500px 320px #818080;
+    background-color: #FFFFFF;
+}
+</style>
+<script type="text/javascript"> 
+function show(){
+    document.getElementById("onloadprogress").className = "amb-bodyBgOpacity";
+}
+function hide(){
+    document.getElementById("onloadprogress").className = "none";
+}
+</script>   
+  <apex:form >
+  <div class="logo"> </div>
+  <apex:actionFunction name="render" action="{!refreshData}" reRender="Books"/>
+  <apex:pageBlock >
+      <apex:pageBlockSection >
+          <apex:panelGrid columns="3">
+          <apex:outputText value="Search EBook"/>
+              <apex:inputText value="{!query}" id="query" style="width:150px"/>
+              <apex:commandButton value="Search" action="{!refreshData}" onclick="return validate('{!$Component.query}')"  status="Wait"/>
+              <apex:actionStatus id="Wait" onstart="show()" onstop="hide()"/>
+             
+              <!--<input type="button" value="Run" onclick="R()"/>-->
+          </apex:panelGrid>
+<!--          </apex:form> -->   
+      </apex:pageBlockSection>
+      </apex:pageBlock>
+<!--    <apex:form > -->
+      <apex:pageBlock rendered="{!IF(render=true,true,false)}"  id="Books" >
+      ***click on checkbox to select book(s) 
+          <apex:pageBlockButtons >
+              <apex:commandButton value="Send Download Link(s)" action="{!getSelected}" />
+          </apex:pageBlockButtons>     
+              <apex:pageBlockTable id="bookList" var="bd" value="{!bookDetails}" >
+                  <apex:column headerValue="Select" style="width:70px"><apex:inputCheckbox value="{!bd.check}"/></apex:column>
+                  <!--<apex:column headerValue="ID" value="{!bd.id}" />-->
+                  <apex:column headerValue="Title" value="{!bd.Title}"/>
+                  <apex:column headerValue="Sub-Title" value="{!bd.subTitle}"/>
+                  <apex:column headerValue="Description" value="{!bd.Description}" width="700px"/>
+                  <apex:column headerValue="Image"><img src="{!bd.image}" /></apex:column>
+                  <apex:column headerValue="ISBN" value="{!bd.isbn}"/>
+              </apex:pageBlockTable>
+       </apex:pageBlock>
+     </apex:form>      
+</apex:page>

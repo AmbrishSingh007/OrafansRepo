@@ -1,0 +1,26 @@
+<apex:page Controller="Loading" >
+<script>
+function display(){
+    alert('Hi');
+    //document.getElementById('imageHolder').src={!$Resource.spinner};
+}
+function display1(){
+    alert('Bye');
+}
+</script>
+<apex:form >
+
+<apex:inputText value="{!searchString}"/>
+<apex:commandButton value="Search" status="myStatus" action="{!search}" rerender="Table"/>
+<apex:actionStatus id="myStatus"  onstart="display()" onstop="display()1"/>
+
+    <image id="imageHolder" src="{!$Resource.spinner}"/>            
+
+  <apex:pageBlock id="Table">
+  <apex:pageBlockTable var="a" value="{!acc}">
+      <apex:column value="{!a.id}"/>
+      <apex:column value="{!a.name}"/>
+  </apex:pageBlockTable>     
+  </apex:pageBlock>
+</apex:form>
+</apex:page>

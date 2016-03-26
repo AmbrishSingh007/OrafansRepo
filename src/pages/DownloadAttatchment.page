@@ -1,0 +1,60 @@
+<apex:page standardController="Attachment" extensions="AttachmentController">
+  <!-- Begin Default Content REMOVE THIS -->
+  <script type="text/javascript" src="{!$Resource.jsZip}"></script>
+  <script>
+      function downloadAll(){
+      window.location.assign('{!URLFOR($Action.Attachment.Download,'00P9000000Jw16N')}');
+      alert('hi2');
+      window.location.assign('{!URLFOR($Action.Attachment.Download,'00P9000000Jw3wd')}');
+      }
+      function newDoc(url) {
+      //alert('hi'+url);
+    //window.location.assign(url);
+    window.open(url,'_blank') ;
+    //window.location.assign('{!URLFOR($Action.Attachment.Download,'00P9000000Jw16N')}');
+    //alert('hi2');
+    //window.location.assign('{!URLFOR($Action.Attachment.Download,'00P9000000Jw3wd')}');
+    //alert('end');
+    }
+    function Doc123(){
+    //alert('hello');
+    var zip = new JSZip();
+
+    
+    zip.add("hello2.xls", '{!URLFOR($Action.Attachment.Download,'00P9000000Jw16N')}');
+    content = zip.generate();
+    location.href="data:application/zip;base64," + content;
+    newDoc('{!URLFOR($Action.Attachment.Download,'00P9000000Jw16N')}');//uncomment both
+    newDoc('{!URLFOR($Action.Attachment.Download,'00P9000000Jw3wd')}');
+    
+    //newDoc('{!URLFOR($Action.Attachment.Download,'00P9000000Jw17k')}');
+    }
+    function onLoadBody1(){ 
+//var binaryObj={!Attachement};
+alert('binaryObj');
+} 
+  </script>
+  <h1>Congratulations</h1>
+  <apex:form >
+  This is your new Page
+
+  <!--<apex:outputLink value="{!URLFOR($Action.Attachment.Download,attachment.00P9000000Jw16N)}" /> -->
+  <apex:outputLink value="{!URLFOR($Action.Attachment.Download,'00P9000000Jw16N')}" >Download</apex:outputLink><br/>
+  <apex:outputLink value="'00P9000000Jw16N'" >Download1</apex:outputLink><br/>
+  <apex:commandButton value="Download" onclick="downloadAll()"/><br/>
+  <input type="button" value="Load new document" onclick="Doc123()"/><br/>
+  <input type="button" value="Download Zipped" onclick="onLoadBody1()"/><br/>
+  </apex:form>
+  <!--
+  <apex:commandButton value="download" title="download"  rerender="tab">
+                       <apex:outputPanel id="tab">
+                         <apex:repeat value="{!a}" var="attachId" >
+                            <script>
+                           window.open('{!URLFOR($Action.Attachment.Download, attachId)}','_blank') ;
+                            </script>
+                         
+                          </apex:repeat>
+                          </apex:outputPanel>
+  </apex:commandButton>
+  -->
+</apex:page>

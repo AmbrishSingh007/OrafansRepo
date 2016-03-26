@@ -1,0 +1,52 @@
+<apex:page controller="ITEbooksController" sidebar="false" showHeader="false" >
+<script>
+function validate(serchBox)
+{
+    var name=document.getElementById(serchBox).value;
+    if(document.getElementById(serchBox).value.length>0)
+    {
+        //alert('Success');
+        return true;
+    }
+    alert('Please enter book name or category to search');
+    return false;
+   
+}
+</script>
+<style>
+.logo{
+    background-image: url('{!$Resource.Logo2}');
+    height: 150px;
+    width: 100%;
+}
+</style>
+  <apex:form >
+  <div class="logo"> </div>
+  <apex:pageBlock >
+      <apex:pageBlockSection >
+      
+          <apex:panelGrid columns="3">
+          <apex:outputText value="Search EBook"/>
+              <apex:inputText value="{!query}" id="query"/>
+              <apex:commandButton value="Search" action="{!refreshData}" reRender="Books" /><!--onclick="return validate('{!$Component.query}')"-->
+          </apex:panelGrid>
+<!--          </apex:form> -->   
+      </apex:pageBlockSection>
+      </apex:pageBlock>
+<!--    <apex:form > -->
+      <apex:pageBlock rendered="{!render}"  id="Books" >
+          <apex:pageBlockButtons >
+              <apex:commandButton value="Send Download Link(s)" action="{!getSelected}" onclick=""/>
+          </apex:pageBlockButtons>     
+              <apex:pageBlockTable var="bd" value="{!bookDetails}" width="9000px">
+                  <apex:column headerValue="Select"><apex:inputCheckbox value="{!bd.check}"/></apex:column>
+                  <apex:column headerValue="ID" value="{!bd.id}" />
+                  <apex:column headerValue="Title" value="{!bd.Title}"/>
+                  <apex:column headerValue="Sub-Title" value="{!bd.subTitle}"/>
+                  <apex:column headerValue="Description" value="{!bd.Description}" width="700px"/>
+                  <apex:column headerValue="Image"><img src="{!bd.image}" /></apex:column>
+                  <apex:column headerValue="ISBN" value="{!bd.isbn}"/>
+              </apex:pageBlockTable>
+       </apex:pageBlock>
+     </apex:form>      
+</apex:page>

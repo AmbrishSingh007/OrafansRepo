@@ -1,0 +1,49 @@
+<apex:page controller="MyClass">
+<!--{!date1}----{!d}-->
+<apex:pageBlock >
+    <apex:pageBlockSection >
+        <apex:form >
+            <apex:actionFunction name="getFields" reRender="listOfFields,objectDetails"/>
+            <apex:selectList id="listOfObjects" value="{!objName}" size="1" onchange="getFields()">
+                <apex:selectOptions value="{!Objects}"/>
+            </apex:selectList>
+            <apex:outputLabel value="{!SobjectFields}"/>   
+        </apex:form>
+    </apex:pageBlockSection>
+    <!--
+    <apex:pageblockSection >
+        <apex:pageBlockTable id="objectDetails" var="o" value="{!ObjectData}">
+            <apex:column headerValue="KeyPrefix" value="{!o.KeyPrefix}"/>
+            <apex:column headerValue="Label" value="{!o.Label}"/>
+            <apex:column headerValue="LabelPlural" value="{!o.LabelPlural}"/>
+            <apex:column headerValue="Name" value="{!o.Name}"/>
+            -->
+            <!--<apex:column headerValue="Accessible" value="{!o.Accessible}"/>
+            <apex:column headerValue="Createable" value="{!o.Createable}"/>
+            <apex:column headerValue="Custom" value="{!o.Custom}"/>
+            <apex:column headerValue="CustomSetting" value="{!o.CustomSetting}"/>-->
+            
+            <!--<apex:column headerValue="Deletable" value="{!o.Deletable}"/>
+            <apex:column headerValue="DeprecatedAndHidden" value="{!o.DeprecatedAndHidden}"/>
+            <apex:column headerValue="FeedEnabled" value="{!o.FeedEnabled}"/>
+            <apex:column headerValue="Mergeable" value="{!o.Mergeable}"/>
+            <apex:column headerValue="Queryable" value="{!o.Queryable}"/>
+            <apex:column headerValue="Searchable" value="{!o.Searchable}"/>
+            <apex:column headerValue="Undeletable" value="{!o.Undeletable}"/>
+            <apex:column headerValue="Updateable" value="{!o.Updateable}"/>-->
+           
+       <!-- </apex:pageBlockTable>
+    </apex:pageblockSection>  -->
+    <!--
+    <apex:pageblockSection >
+        
+        <apex:pageBlockTable id="listOfFields" var="field" value="{!Fields}">
+            <apex:column headerValue="Label" value="{!field.Label}"/>
+            <apex:column headerValue="SobjectField" value="{!field.SobjectField}"/>
+            <apex:column headerValue="Type" value="{!field.Type}"/>
+            <apex:column headerValue="ByteLength" value="{!field.ByteLength}"/>
+           
+        </apex:pageBlockTable>
+    </apex:pageblockSection> -->
+</apex:pageBlock>
+</apex:page>

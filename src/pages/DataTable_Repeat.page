@@ -1,0 +1,9 @@
+<apex:page controller="test_Repeat_dataTable" extensions="test_ext">
+  
+  <apex:repeat value="{!strings}" var="string" id="theRepeat">
+  <apex:repeat value="{!string}" var="x">
+      {!x.name}---
+  </apex:repeat>
+  </apex:repeat>
+    
+</apex:page>

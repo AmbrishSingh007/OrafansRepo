@@ -1,0 +1,28 @@
+<apex:page >
+
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+var cars = new Array("Saab", "Volvo", "BMW");
+document.getElementById("demo").innerHTML = cars[0];
+//alert('hello');
+/* var p=[ObjectForm:{name=multi__c, values=;Hello1;Hello2;Hello3;Hello4"}, ObjectForm:{name=multi1__c, values=;A;B;C;D;E"}];
+    alert(p[0][0].name); */
+var x=[["A","B"],["a","b"]];
+alert('rr');
+
+
+//[multi__c:";Hello1;Hello2;Hello3;Hello4", multi1__c:";A;B;C;D;E"]
+var myArrray = [
+  { name: "Donald Duck", image: "assets/scrybe.jpg" },
+  { name: "Winnie Pooh", image: "assets/scrybe.jpg" },];
+alert(myArrray[0].name);    
+</script>
+
+</body>
+</html>
+
+</apex:page>

@@ -1,0 +1,6 @@
+<apex:page standardController="Farzi__c">
+<apex:form >
+<!--<flow:interview name="MyRule"/>-->
+<apex:commandLink value="01Q900000006x4O" action="https://ap1.salesforce.com/01Q900000006x4O"/>
+</apex:form>
+</apex:page>

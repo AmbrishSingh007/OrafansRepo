@@ -1,0 +1,19 @@
+<apex:page Controller="Search1">
+<apex:form >
+  <apex:pageBlock >
+  <apex:outputLabel >Name</apex:outputLabel>
+      <apex:inputText value="{!Name}"/>
+      <apex:outputLabel >Email</apex:outputLabel>
+      <apex:inputText value="{!Email}"/>
+      <apex:commandButton value="Search"/>
+  </apex:pageBlock>
+  <apex:pageBlock >
+       <apex:pageBlock >
+      <apex:pageBlockTable var="a" value="{!Data}">
+          <apex:column value="{!a.id}"/>
+          <apex:column value="{!a.name}"/>
+      </apex:pageBlockTable>
+  </apex:pageBlock>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

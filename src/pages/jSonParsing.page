@@ -1,0 +1,31 @@
+<apex:page controller="JsonParsing">
+<script>
+function onClick(){
+var tab='<table border="1px"><th>ID</th><th>Name</th><th>Phone</th>';
+var str='{!strJson}';
+var result=JSON.parse(str);
+
+for(var i in result)
+{
+     tab+='<tr><td>'+result[i].id+'</td><td>'+result[i].name+'</td><td>'+result[i].phone+'</td></tr>';
+    //alert(result[i].name);
+}
+tab+='</table>';
+alert(tab);
+//document.getElementByTagName("div")[0].appendChild(document.createTextNode("hello"));
+//alert(document.getElementByTagName("div")[0]);
+document.getElementById("sp").innerHTML=tab; 
+}
+</script>
+
+<apex:form >
+<apex:pageBlock >
+<apex:commandButton action="{!getlstAccount}" value="Get JSON String"/><br/>
+{!strJson}<br/>
+<br/>
+<input type="button" value="Generate Table" onclick="onClick()" />
+</apex:pageBlock>
+</apex:form>
+<div id="divide" />
+<span id="sp" ></span>
+</apex:page>

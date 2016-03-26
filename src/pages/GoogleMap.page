@@ -1,0 +1,100 @@
+<apex:page standardController="Lead" 
+    showHeader="false" 
+    standardStylesheets="false"
+    applyHtmlTag="false"
+    applyBodyTag="false">
+    <html>
+        <head>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            <script src="//open.mapquestapi.com/sdk/js/v7.0.s/mqa.toolkit.js?key=Fmjtd%7Cluur290z21%2C85%3Do5-90z25r"></script>
+            <script type="text/javascript"> 
+                var mapQuestAPIKey = "Fmjtd%7Cluur290z21%2C85%3Do5-90z25r";
+                var recordName = "{!Lead.Name}";
+                var addressToGeocode = "{!Lead.Street},{!Lead.City},{!Lead.State},{!Lead.Country}";//{!Lead.Street},{!Lead.City},{!Lead.State},{!Lead.Country}
+ 
+                /*[Edit to be Avoided]-------------------------------------------------------Begins*/
+                var latLngInfo;
+                function constructMapQuestGeocodingURL (apiKey, location) {
+                    return "//open.mapquestapi.com/geocoding/v1/address?key=" + apiKey + "&location=" + encodeURI(location);
+                }
+                
+                function geocodeAndRenderMap(){
+                alert('---'+addressToGeocode);
+                    jQuery.ajax(
+                        {
+                            url : 
+                                constructMapQuestGeocodingURL(
+                                    mapQuestAPIKey, 
+                                    addressToGeocode
+                                ),
+                            method : "GET",
+                            success :
+                                function (data, textStatus, jqXHR){
+                                    if(
+                                        data.info.statuscode == 0 && 
+                                        data.results[0].locations[0] != undefined
+                                    ){
+                                        latLngInfo = data.results[0].locations[0].latLng;
+                                        createMap(latLngInfo);
+                                    }
+                                },
+                            error:
+                                function (jqXHR, textStatus, errorThrown){
+                                    alert(errorThrown);
+                                }
+                        }
+                    );
+                }
+ 
+                function createInfoWindow(latLngInfo){
+                    window.poi = new MQA.Poi(latLngInfo);
+ 
+                    poi.setRolloverContent(recordName);
+                    poi.setInfoContentHTML(addressToGeocode);
+                    map.addShape(poi);
+                    poi.toggleInfoWindow();
+                }
+ 
+                function createMap(latLngInfo){
+                    var options = {
+                        elt: document.getElementById('map'),
+                        zoom: 8,
+                        latLng: { lat: latLngInfo.lat, lng: latLngInfo.lng },
+                        mtype: 'osm',
+                        bestFitMargin: 0,
+                        zoomOnDoubleClick: true
+                    };
+                    
+                    window.map = new MQA.TileMap(options);
+                     
+                    MQA.withModule(
+                        'largezoom','viewoptions','geolocationcontrol','mousewheel', 
+                        function() {
+                            map.addControl(
+                                new MQA.LargeZoom(),
+                                new MQA.MapCornerPlacement(MQA.MapCorner.TOP_LEFT, new MQA.Size(5,5))
+                            );
+ 
+                            map.addControl(new MQA.ViewOptions());
+ 
+                            map.addControl(
+                                new MQA.GeolocationControl(),
+                                new MQA.MapCornerPlacement(MQA.MapCorner.TOP_RIGHT, new MQA.Size(10,50))
+                            );
+ 
+                            map.enableMouseWheelZoom();
+                        }
+                    );
+ 
+                    createInfoWindow(latLngInfo);
+                }
+ 
+                geocodeAndRenderMap();
+                /*[Edit to be Avoided]---------------------------------------------------------Ends*/
+            </script>
+        </head>
+        <body>
+            <div id="map" style="width:1080px; height:300px;"></div>
+        </body>
+    </html>
+</apex:page>

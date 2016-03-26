@@ -1,0 +1,19 @@
+<apex:page controller="BypassValidationController">
+<script>
+    function callMe(f){
+    //alert(f);
+        if(f==true){
+            redirect();
+            return true;
+        }
+        else
+            return false;
+    }
+</script>
+<apex:form >
+<apex:pageMessages id="msg" ></apex:pageMessages>
+  Dont Bypass Validation
+  <apex:actionFunction name="redirect" action="{!redirect}" />
+  <apex:commandButton value="Start" action="{!enterValue}" oncomplete="callMe({!flag})" rerender="msg"/>
+</apex:form>
+</apex:page>

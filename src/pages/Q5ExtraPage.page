@@ -1,0 +1,13 @@
+<apex:page standardController="Account" extensions="contactHandler5">
+<apex:form >
+<apex:pageBlock >
+    <apex:pageBlockSection >
+            <apex:pageBlockTable var="aContact" value="{!Data}" id="ContactTable">         
+            <apex:column headerValue="ID" value="{!aContact.id}"/>
+            <apex:column headerValue="Name"><apex:outputLabel value="{!aContact.name}"/></apex:column>
+            <apex:column headerValue="AccountID" value="{!aContact.AccountId}"/>        
+        </apex:pageBlockTable>
+    </apex:pageBlockSection>      
+</apex:pageBlock>
+</apex:form>
+</apex:page>

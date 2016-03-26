@@ -1,0 +1,127 @@
+<apex:page controller="TreeData" action="{!pushData}">
+DEMO For Tree
+<script src="{!$Resource.TreeMenu}" type="text/javascript"></script>
+<script> var previousOnload = window.onload; window.onload = function() { onLoadBody(); } </script>
+<apex:form >
+    <apex:outputLink value="/a0M9000000EwWWX">click</apex:outputLink><br/><br/>
+</apex:form>
+<style type="text/css">
+
+.menu   {
+    width:242px;
+    height:450px; 
+        background-image: url('Wallpapers/Announcement_1.JPG');
+        
+    overflow: auto;
+        color: white;
+        margin:-7px 0px 0px -7px;
+    padding:0px;
+    }
+
+/* Menu styles */
+.menu ul
+    {
+    margin:0px;
+    padding:0px;
+    text-decoration:none;
+        color: black;
+    }
+.menu li
+    {
+    margin:0px 0px 0px 15px;
+    padding:0px;
+    list-style-type:none;
+    text-align:left;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:13px;
+    font-weight:normal;
+        color: black;
+    }
+
+/* Submenu styles */
+.menu ul ul 
+    {
+    color: black;
+    }
+.menu li li
+    {
+            color: black;
+    margin:0px 0px 0px 16px;
+    }
+
+/* Symbol styles */
+.menu .symbol-item,
+.menu .symbol-open,
+.menu .symbol-close
+    {
+    float:left;
+    width:16px;
+    height:1em;
+    background-position:left center;
+    background-repeat:no-repeat;
+    }
+.menu .symbol-item  { background-image:url('{!$Resource.minus}'); }
+.menu .symbol-close { background-image:url('{!$Resource.plus}');}
+.menu .symbol-open  { background-image:url('{!$Resource.minus}'); }
+.menu .symbol-item.last  { }
+.menu .symbol-close.last { }
+.menu .symbol-open.last  { }
+
+/* Menu line styles */
+.menu li.item  { font-weight:normal; }
+.menu li.close { font-weight:normal; }
+.menu li.open  { font-weight:bold; }
+.menu li.item.last  { }
+.menu li.close.last { }
+.menu li.open.last  { }
+
+a.go:link, a.go:visited, a.go:active
+        {
+        display:block;
+        height:26px;
+        width:100px;
+        background-color:#FFFFFF;
+        color: white;
+        font-family:Arial,Helvetica,sans-serif;
+        font-size:12px;
+        font-weight:bold;
+        text-align:right;
+        text-decoration:none;
+        line-height:26px;
+        padding-right:30px;
+        background-image:url(go.gif);
+        background-position:right;
+        background-repeat:no-repeat;
+        }
+a.go:hover
+        {
+        text-decoration:none;
+        color: white;
+        }
+#example3 { width:40%; padding:0px; margin-left:24px; color: white;}
+#example3 li { list-style:none; margin:1px 0px; color: white;}
+#example3 li a {  height:16px; padding:0px 4px; background-color:#FFFFFF;color: white; }
+#example3 li ul { margin:0px; padding:0px; color: white;}
+#example3 li ul li a {  border-bottom: solid #ECECEC 1px; padding-left:20px;color: white; }
+.style1 {font-size: xx-small}
+</style>
+<script>
+    function onLoadBody(){    
+       
+
+var d='{!pushData}'; 
+document.getElementById('span1').innerHTML=d;
+make_tree_menu('example2',false,false,false,false);
+//alert('Hello'+d);
+  
+}
+ 
+</script>
+           
+<div class="menu">
+    <span id="span1"></span>
+</div>
+
+<apex:outputText ></apex:outputText>
+<!--<apex:commandButton onclick=""/>-->
+</apex:page>

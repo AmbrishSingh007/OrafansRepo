@@ -1,0 +1,14 @@
+<apex:page controller="ExpenseController">
+<h6>Expense Sheet</h6><br/>
+<!--<apex:pageMessages rendered="true" id="msg"/><apex:pageMessages /> -->
+<apex:pageMessage severity="CONFIRM" ID="MSG2" rendered="{!RENDERED}" summary="Record Saved Successfully"/>
+  <apex:form >
+  <table>
+      <tr><td>Spent By </td><td><apex:inputField value="{!de.Spent_By__c}"/></td></tr>
+      <tr><td>Date </td><td><apex:inputField value="{!de.Date__c}"/></td></tr>
+      <tr><td>Amount </td><td><apex:inputField value="{!de.Amount__c}"/></td></tr>
+      <tr><td>Description </td><td><apex:inputField value="{!de.Description__c}"/></td></tr>
+  </table>
+  <apex:commandButton value="Save" action="{!save}" />
+  </apex:form>
+</apex:page>

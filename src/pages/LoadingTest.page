@@ -1,0 +1,54 @@
+<apex:page controller="exampleCon1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>    
+    //j$ = jQuery.noConflict();  
+    function startProcessing(id0,id1){
+    alert('---'+id0+'---'+id1);
+        
+        //$("#divison1").fadeTo("slow",0.12);
+        //alert('---'+document.getElementById('{!$Component.form1}'));+//{!$Component.divison1.form1.cmd1}
+        //alert(document.getElementById(id0).value+' '+document.getElementById(id1).value);
+        //document.getElementsByName("j_id0:form2:cmd2").disabled="true";//j_id0:form2:cmd2
+        
+        id1.className = 'btnDisabled';
+        document.getElementById(id0).disabled="true";
+        document.getElementById(id1).disabled="true";
+    }    
+   
+    function stopProcessing()
+    {        
+        //$("#divison1").fadeTo("slow",1);
+    }
+    </script>
+    <div id="div2">
+    
+    </div>
+        
+    <div id="divison1">
+    <apex:form id="form1">
+    
+    <div id="div2">
+            <h1>dfghjk{!$Label.Bypass}</h1>
+            <apex:inputField id="acc" value="{!acc.Name}" />
+            <apex:commandButton id="cmd2" action="{!incrementCounter}" Value="Dont Click Me" rerender="counter" />
+            <apex:outputText value="Testing" id="ctr"/>
+        </div>
+        <apex:outputText value="Watch this counter: {!count}" id="counter"/>
+        <apex:actionStatus id="counterStatus" style="align:center;" >
+            <apex:facet name="start" >
+            <apex:image url="{!$Resource.spinner}" height="100" width="100" />                       
+        </apex:facet>
+        </apex:actionStatus>
+        <apex:commandButton id="cmd1" action="{!incrementCounter}" Value="Click Me" rerender="counter" status="DetailLoading"/> <!--status="counterStatus"-->
+        <apex:actionStatus id="DetailLoading" style="align:center" layout="block" onstart="startProcessing('{!$Component.form1.acc}','{!$Component.form1.cmd2}')" onstop="stopProcessing()">
+                                <apex:facet name="start">
+                                    <Table align="Center">
+                                        <tr>
+                                            <td><img src="{!$Resource.loading_spinner}" height="500" width="500" /> </td>
+                                        </tr>
+                                    </Table> <br/> <br/> 
+                                </apex:facet>
+                            </apex:actionStatus>
+    </apex:form>
+    </div>
+</apex:page>

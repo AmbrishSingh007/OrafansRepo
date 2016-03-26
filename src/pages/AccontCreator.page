@@ -1,0 +1,12 @@
+<apex:page controller="Acc">
+  <apex:form >
+  <apex:panelGrid columns="2">
+      Name: <apex:inputText value="{!name}"/>
+      Type: <apex:selectList value="{!active}" >
+          <apex:selectOption itemValue="Yes" itemLabel="Y"/>
+          <apex:selectOption itemValue="No" itemLabel="N"/>
+          </apex:selectList>
+      <apex:commandButton action="{!UpdateAcc}" value="Update"/>
+      </apex:panelGrid>
+  </apex:form>
+</apex:page>

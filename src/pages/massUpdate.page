@@ -1,0 +1,18 @@
+<apex:page standardController="Opportunity" recordSetVar="opp">
+Selected Opportunities:
+ 
+<apex:form >
+<apex:pageBlock >
+     <apex:pageBlockSection >
+      <apex:pageBlockTable var="a" value="{!selected}">
+          <apex:column value="{!a.id}" />
+          <apex:column value="{!a.name}" />
+         
+      </apex:pageBlockTable>
+      </apex:pageBlockSection>
+  </apex:pageBlock>
+  
+</apex:form>  
+  
+  
+</apex:page>

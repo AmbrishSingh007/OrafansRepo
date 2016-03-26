@@ -1,0 +1,27 @@
+<apex:page controller="delEventHandler2" sidebar="false">
+
+<apex:form >
+<apex:pageBlock >
+<apex:outputLabel value="{!searchItem}" id="newOP"/>
+<apex:outputLabel >Company Name</apex:outputLabel>
+<apex:inputText value="{!searchItem}" styleClass="look"/>
+    <apex:commandButton value="Search" rerender="leadTable"/>
+</apex:pageBlock>    
+<apex:pageBlock >
+    <apex:pageBlockButtons >
+       <apex:commandButton action="{!closeLeads}" value="Close Leads" rerender="leadTable" />
+       <apex:commandButton value="Select All Open Leads" action="{!selectAllOpen}" rerender="leadTable" /> 
+    </apex:pageBlockButtons>
+
+            <apex:pageBlockTable var="aLead" value="{!Wrap}" id="leadTable">
+            <apex:column headerValue="Checked"><apex:inputCheckbox value="{!aLead.checked}"/></apex:column>          
+            <apex:column headerValue="ID" value="{!aLead.id}"/>
+            <apex:column headerValue="Name"  ><apex:outputLabel value="{!aLead.name}"/></apex:column>
+            <apex:column headerValue="Company" ><apex:outputLabel value="{!aLead.Company}"/></apex:column> 
+             <apex:column headerValue="Lead Status" ><apex:outputLabel value="{!aLead.Status}"/></apex:column>          
+        </apex:pageBlockTable>
+     
+</apex:pageBlock>
+
+</apex:form>
+</apex:page>

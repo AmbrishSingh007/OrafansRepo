@@ -1,0 +1,10 @@
+<apex:page standardController="Account" extensions="pg1">
+<!--Map:  {!selConsMap}-->
+  <apex:pageBlock >
+      <apex:pageBlockTable var="sel" value="{!SelData}">
+          <apex:column value="{!sel.c.id}"/>
+          <apex:column value="{!sel.c.name}"/>
+      </apex:pageBlockTable>
+  </apex:pageBlock>
+ 
+</apex:page>

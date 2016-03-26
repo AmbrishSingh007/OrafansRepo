@@ -1,0 +1,13 @@
+<apex:page controller="TestData">
+<br/>
+<br/>    
+{!d1}<br/>
+{!d2}<br/>
+{!d3}<br/>
+{!d4}<br/>
+{!d5}<br/>
+{!d6}<br/>
+{!d7}<br/>
+{!d8}<br/>
+{!d9}<br/>
+</apex:page>

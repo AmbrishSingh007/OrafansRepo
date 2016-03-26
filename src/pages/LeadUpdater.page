@@ -1,0 +1,28 @@
+<apex:page controller="delEventHandler">
+
+<apex:form >
+<apex:pageMessage summary="Records affected: {!count}" severity="info" strength="3"  id="msg" />
+<apex:pageBlock >
+    <apex:pageBlockSection >
+        <apex:panelGrid columns="3">
+        <apex:outputLabel >Company Name</apex:outputLabel>
+        <apex:inputText value="{!searchItem}"/>
+        <apex:commandButton value="Search" rerender="leadTable,msg" />
+        </apex:panelGrid>
+    </apex:pageBlockSection> 
+</apex:pageBlock>   
+<apex:pageBlock >
+    <apex:pageBlockButtons >
+        <apex:commandButton action="{!closeLeads}" value="Close Leads" rerender="leadTable,msg" />
+    </apex:pageBlockButtons>
+    
+        <apex:pageBlockTable var="aLead" value="{!WrapData}" id="leadTable">
+            <apex:column headerValue="ID" value="{!aLead.id}"/>
+            <apex:column headerValue="Name"  value="{!aLead.name}"/>
+            <apex:column headerValue="Company" value="{!aLead.Company}"/> 
+             <apex:column headerValue="Lead Status" value="{!aLead.Status}" / >          
+        </apex:pageBlockTable>
+</apex:pageBlock>
+
+</apex:form>
+</apex:page>

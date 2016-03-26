@@ -1,0 +1,20 @@
+<apex:page controller="NullPtrPrblmConntroller">
+<apex:form >
+    <apex:pageBlock >
+        <apex:inputtext value="{!query}"/>
+        <apex:commandButton value="Search" action="{!refresh}" rerender="A"/>
+    </apex:pageBlock>
+    <apex:pageBlock >
+        <apex:pageblockButtons >
+            <apex:commandButton value="Send Selected" action="{!sendSelected}"/>
+        </apex:pageblockButtons>
+        
+          
+          <apex:pageblockTable var="acc" value="{!accs}" id="A">
+              <apex:column ><apex:inputCheckbox value="{!acc.check}"/></apex:column>
+              <apex:column value="{!acc.id}"/>
+              <apex:column value="{!acc.name}"/>
+          </apex:pageblockTable>
+    </apex:pageBlock>
+         </apex:form>
+</apex:page>

@@ -1,0 +1,14 @@
+<apex:page standardController="WeatherData__c" extensions="newWeather">
+<apex:form >
+  <apex:inputField id="parent" value="{!myWeatherData.Picklist1__c}"/> 
+  <apex:inputField id="child" value="{!myWeatherData.Dependent__c}"/> 
+  <apex:commandButton action="{!doChange}" reRender="parent,child" value="Test Dependency"/>
+  
+</apex:form>
+<form>
+  <input id="id1" type="radio" name="s" >A</input>
+  <input id="id2" type="radio" name="s" checked="">B</input>
+  <input id="id3" type="radio" name="s" >C</input>
+  <input id="id4" type="radio" name="s" >D</input>
+  </form>
+</apex:page>

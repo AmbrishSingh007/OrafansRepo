@@ -1,0 +1,16 @@
+<apex:page standardController="Account" extensions="XXXX" recordSetVar="XXX">
+<apex:form >
+<!--<apex:pageBlock >
+  <apex:pageBlockTable var="X" value="{!XXX}">
+      <apex:column value="{!X.id}"/>
+      <apex:column value="{!X.name}"/>
+      
+  </apex:pageBlockTable>
+  <apex:selectRadio value="{!selected}">
+            <apex:selectOptions value="{!items}"/><br/>
+            </apex:selectRadio><p/>
+</apex:pageBlock>-->
+  <input type="radio" name="sex" value="male" checked='true' />Male<br/>
+  <input type="radio" name="sex" value="female" checked='false'/>Female
+</apex:form>
+</apex:page>

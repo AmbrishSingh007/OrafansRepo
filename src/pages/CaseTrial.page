@@ -1,0 +1,5 @@
+<apex:page StandardController="Case">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Just Testing Overriding</h1>
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

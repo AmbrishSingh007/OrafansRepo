@@ -1,0 +1,23 @@
+<apex:page standardController="Account" extensions="contactHandler2">
+
+<apex:form >
+<apex:pageBlock >
+   
+    <apex:pageBlockButtons >
+        <apex:actionFunction name="updateContact" action="{!UpdateContacts}" reRender="ContactTable"/>
+       <apex:commandButton value="Update" onclick="updateContact()"/>
+    </apex:pageBlockButtons>
+            <apex:pageBlockTable var="aContact" value="{!Wrap}" id="ContactTable">
+            <apex:column headerValue="Checked"><apex:inputCheckbox value="{!aContact.checked}"/></apex:column>          
+            <apex:column headerValue="ID" value="{!aContact.con.id}"/>
+            <apex:column headerValue="Name"><apex:outputLabel value="{!aContact.con.name}"/></apex:column>
+            <apex:column headerValue="Email"><apex:inputText value="{!aContact.con.email}"/></apex:column>
+            <apex:column headerValue="Phone"><apex:inputText value="{!aContact.con.phone}"/></apex:column>
+            <apex:column headerValue="Fax"><apex:inputText value="{!aContact.con.fax}"/></apex:column>
+            <apex:column headerValue="AccountID" value="{!aContact.con.AccountId}"/>        
+        </apex:pageBlockTable>
+     
+</apex:pageBlock>
+</apex:form>
+
+</apex:page>

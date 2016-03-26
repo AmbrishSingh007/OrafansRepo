@@ -1,0 +1,7 @@
+<apex:page standardController="Campaign" extensions="Redirect">
+<apex:form >
+  <apex:commandLink value="Close Leads" action="{!getURL}" target="_blank">
+  <apex:param id="cid" value="{!Cid}"/>
+  </apex:commandLink>
+</apex:form>
+</apex:page>

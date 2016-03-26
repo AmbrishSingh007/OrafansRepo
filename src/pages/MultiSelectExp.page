@@ -1,0 +1,118 @@
+<apex:page controller="X">
+<html>
+<body>
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" />
+<script>
+
+function LoadData()
+{
+    var len='{!length}';
+    var t='{"jList":'+'{!lists}'+'}';
+    var list=JSON.parse(t);
+    alert('Length: '+len);
+    for(var x=0;x<len;x++){
+        var temp='<select id="'+list.jList[x].name+'" multiple="true">';
+        var values=list.jList[x].values.split(';');
+        for(var sp=0;sp<values.length;sp++)
+        {
+            temp+='<option value="'+values[sp]+'">'+values[sp]+'</option>';
+        }
+        temp+='</select>';
+        var button='<input type="button" onclick="getSelectValues(document.getElementsByTagName(\'select\')['+x+']);" value=">" />';
+        var selectedList='<select id="selected'+list.jList[x].name+'" multiple="true">';
+        temp='<tr><td>'+temp+'</td><td>'+button+'</td><td>'+selectedList+'</td></tr>';
+        alert(list.jList[x].name);   
+        //document.getElementById('generateSelectLists').innerHTML=temp;
+        $( "#add" ).append( temp  );
+        
+        
+    }
+    
+    
+    /*var p={multi__c:";Hello1;Hello2;Hello3;Hello4", multi1__c:";A;B;C;D;E"};
+    alert(p.multi__c);
+    alert(p.multi1__c);*/
+    
+    //var p=[multi__c:";Hello1;Hello2;Hello3;Hello4", multi1__c:";A;B;C;D;E"];
+    //alert(p[0]);
+    //alert(p[1]);
+    
+    //var mapp={};
+    var list='{!ll1}';  
+    alert(list);
+    document.getElementById("A").value=t;
+    /*for(var x in result){
+        alert(result[x]);     
+     }  */ 
+        
+    var rData='{!data}';
+    var Data = rData.split(";");
+    
+  for(var x=0;x<Data.length;x++){
+  if(Data[x]!='null'){
+        var ele = document.getElementById("Test");
+        var option = document.createElement("option");
+        option.text = Data[x];
+        ele.add(option);
+        }
+      }
+
+    
+    
+}
+function getSelectValues(select) {
+
+  var result = [];
+  var str='';
+  var options =  select.options;
+  var opt;
+
+  for (var i=0, iLen=options.length; i<iLen; i++) {
+    opt = options[i];
+
+    if (opt.selected) {
+      result.push(opt.value || opt.text);
+      str=str+opt.value+';';
+      //var ele1 = document.getElementById("Test");
+      //ele1.remove(i);
+    }
+  }
+ 
+  
+  var Data = str.split(";");
+  for(var x=0;x<Data.length;x++){
+      if(Data[x]!=''){
+        var ele = document.getElementById("Waste");
+        var option = document.createElement("option");
+        option.text = Data[x];
+        ele.add(option);
+        }
+    }
+    //alert(str);
+  return result;
+}
+</script>
+<form >
+<input type="textbox" id="A"/>
+<input type="button" onclick="LoadData();" value="Load Data" />
+<br/>
+
+<select id="Test" multiple="true">
+</select>
+<input type="button" onclick="var el = document.getElementsByTagName('select')[0];alert(getSelectValues(el));" value=">" />
+<select id="Waste" multiple="true">
+</select>
+
+<span id="generateSelectLists"/>
+<div id="addChild" >
+    <table id="add">
+    </table>
+</div>
+<br/>
+
+</form>
+
+</body>
+</html>
+
+</apex:page>
